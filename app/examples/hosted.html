@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.form.io/formiojs/formio.full.min.css">
+<script src="https://cdn.form.io/formiojs/formio.full.min.js"></script>
+<div id="formio"></div>
+
+<script type="text/javascript">
+    Formio.icons = 'fontawesome';
+    Formio.createForm(document.getElementById('formio'), 'https://examples.form.io/example').then(function(form) {
+
+        // Default the submission.
+        form.submission = {
+            data: {
+                firstName: 'Joe',
+                lastName: 'Smith'
+            }
+        };
+    });
+</script>
+
+<h3>Result</h3>
+<div class="card card-body bg-light">
+    <div id="formio"></div>
+    <script type="text/javascript">
+        Formio.createForm(document.getElementById('formio'), 'https://examples.form.io/example').then(function(form) {
+            form.submission = {
+                data: {
+                    firstName: 'Joe',
+                    lastName: 'Smith'
+                }
+            };
+
+            form.on('render', function() {
+                console.log('Rendered!');
+            });
+
+            form.on('change', function(value) {
+                console.log(value);
+            });
+
+            form.on('submit', function(submission) {
+                console.log(submission);
+            });
+        });
+    </script>
+</div>
